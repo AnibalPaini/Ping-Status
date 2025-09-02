@@ -12,6 +12,7 @@ import pings from "./utils/ping.js";
 import { conectarBotTelegram } from "./utils/botTelegram.js";
 import cookieParser from "cookie-parser";
 import config from "./config/config.js";
+import { seedAdmin } from "./utils/utils.js";
 
 const app = express();
 
@@ -60,3 +61,4 @@ server.listen(port, () => {
 connectDB();
 pings();
 conectarBotTelegram();
+seedAdmin();

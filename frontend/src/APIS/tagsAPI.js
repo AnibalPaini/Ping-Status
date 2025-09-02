@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/tags";
+const URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api/tags`
+  : "http://localhost:8080/api/tags";
 
 export const getTags = async () => {
   return await axios.get(`${URL}/`, { withCredentials: true });

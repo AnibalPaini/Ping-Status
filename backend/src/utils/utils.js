@@ -55,3 +55,17 @@ export const authenticate = (req, res, next) => {
     return res.status(401).send("Token inválido o expirado");
   }
 };
+
+import User from "../db/models/user.model.js";
+
+export const seedAdmin = async () => {
+  const exists = await User.findOne({ user: "admin" });
+  if (!exists) {
+    await User.create({
+      user: "admin",
+      password: bcrypt.hashSync("123", 10),
+      rol: "superadmin",
+    });
+    console.log("Usuario admin creado");
+  }
+};

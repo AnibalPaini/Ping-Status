@@ -15,5 +15,6 @@ export default {
   SECRET_JWT: process.env.SECRET_JWT,
   TOKEN_TELEGRAM: process.env.TOKEN_TELEGRAM,
   GROUP_CHAT_ID: process.env.GROUP_CHAT_ID,
-  SECRET_COOKIE: process.env.SECRET_COOKIE
+  SECRET_COOKIE: process.env.SECRET_COOKIE,
+  NODE_ENV: process.env.NODE_ENV
 };

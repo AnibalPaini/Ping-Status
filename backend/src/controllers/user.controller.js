@@ -1,13 +1,14 @@
 import UserService from "../services/users.service.js";
+import config from "../config/config.js";
 import {
   createHash,
   isValidPassword,
   generateJWToken,
 } from "../utils/utils.js";
-import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
 
 const userService = new UserService();
+
+const isProduction = config.NODE_ENV === "production";
 
 export const postUserController = async (req, res) => {
   try {
@@ -67,8 +68,8 @@ export const loginController = async (req, res) => {
       maxAge: 5 * 60 * 60 * 1000,
       httpOnly: true,
       signed: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: isProduction ? "none" : "lax",
+      secure: isProduction, 
     });
 
     res.status(200).send({ status: "Success" });
@@ -80,7 +81,6 @@ export const loginController = async (req, res) => {
 
 export const logoutController = async (req, res) => {
   try {
-
     res.clearCookie("jwtCookieToken", {
       httpOnly: true,
       signed: true,
@@ -139,7 +139,7 @@ export const putUsersController = async (req, res) => {
     }
 
     let exist = await userService.findUser(user);
-    console.log(exist)
+    console.log(exist);
     if (exist) {
       return res
         .status(400)

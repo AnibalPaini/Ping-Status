@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/devices";
+const URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api/devices`
+  : "http://localhost:8080/api/devices";
 
 export const getDevices = async () => {
   return await axios.get(`${URL}/`, { withCredentials: true });

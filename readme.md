@@ -97,24 +97,30 @@ En caso de que un dispositivo deje de responder, el sistema enviará una **alert
    SECRET_JWT=
    DB_URI=
    SECRET_COOKIE=
+   NODE_ENV=  (production en caso de poner en producción)
    ```
 
-5. Ejecutar el backend:
+5. Configurar variables de entorno en el frontend (`/frontend/.env`):
+
+   ```
+   VITE_API_URL= ("URL DEL SERVIDOR BACKEND")
+   ```
+
+6. Ejecutar el backend:
 
    ```bash
    npm run dev
    ```
 
-6. Ejecutar el frontend:
+7. Ejecutar el frontend:
 
    ```bash
    npm run dev
    ```
 
-7. Crear un bot en telegram con BotFather y agregar el id del bot y id del chat al .env (en caso de querer recibir notificaciones via telegram)
+8. Crear un bot en telegram con BotFather y agregar el id del bot y id del chat al .env (en caso de querer recibir notificaciones via telegram)
 
-8. Crear manualmente un usuario en la colección `users` con rol `"superadmin"`.  
-   ⚠️ La contraseña creada en la base de datos no estará hasheada, por lo que deberás iniciar sesión y **cambiar la clave desde la aplicación** para que quede correctamente encriptada.
+9. Se crea automaticamente un usuario "superadmin", user:admin clave:123, desde dentro de la app podra cambiar su clave.
 
 ---
 
